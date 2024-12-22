@@ -30,7 +30,7 @@ int main() {
 
     imshow("Img Og", image); // mostrar a imagem original
 
-    imshow("Img cinza", resultado); // mostrar a imagem cinza
+    imshow("Img com raio destacado", resultado); // mostrar a imagem cinza
 
     waitKey(0); // esperar até que uma tecla seja pressionada
 

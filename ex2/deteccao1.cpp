@@ -20,11 +20,11 @@ int main() {
     cvtColor(luz, hsv, COLOR_BGR2HSV);
 
     // Definir os limites da cor azul em HSV
-    Scalar menorazul(126, 0, 100);   
+    Scalar menorazul(126, 100, 100);   
     Scalar maiorazul(150, 255, 255);
-    Scalar branco(0, 0, 200);
+    Scalar branco(0, 0, 240);
     Scalar branco2(179, 55, 255);
-    Scalar roxo(151, 0, 100);
+    Scalar roxo(151, 100, 100);
     Scalar roxo2(169, 255, 255);
 
     // Criar máscaras para as duas faixas de vermelho
