@@ -9,7 +9,8 @@ int main() {
 
     using namespace cv; // namespace para não precisar ficar repetindo cv::
 
-    Mat luz = imread("images/luz.jpg"); // carregar a imagem da luz visível
+    //Mat luz = imread("images/luz.jpg"); // carregar a imagem da luz visível
+    Mat luz = imread("images/raio.png");
     if (luz.empty()) { //condição para detectar se a imagem foi carregada/ se o caminho está
         printf("Erro ao carregar a imagem!\n"); 
         return -1;

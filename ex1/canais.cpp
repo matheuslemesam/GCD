@@ -1,5 +1,11 @@
 // g++ canais.cpp -o main.exe `pkg-config --cflags --libs opencv4`
 
+/*
+Implementar:
+Imread abrindo a imagem já em escala de cinza.
+*/ 
+
+
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 
@@ -8,7 +14,8 @@ int main() {
     using namespace cv;
     using namespace std;
 
-    Mat espectro = imread("images/espectro.jpg"); // carregar a imagem
+    //Mat espectro = imread("images/espectro.jpg"); // carregar a imagem
+    Mat espectro = imread("images/hulk.png");
 
     if (espectro.empty()) { // verificar se a imagem foi carregada corretamente ou se o caminho está errado
         printf("Erro ao carregar a imagem.\n"); 
