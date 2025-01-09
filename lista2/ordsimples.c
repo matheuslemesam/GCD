@@ -10,15 +10,15 @@ void exch(int a, int b);
 int main (void){
 
     int vetor[999]; //já que o vetor pode ir só até 1000 elementos.
-    int i = 0;
+    int ino;  
 
-    while (scanf("%d", &vetor[i]) != EOF){
-        selection_sort(vetor, 0, i);
-        i++;
+    for (ino=0; scanf("%d", &vetor[ino]) != EOF; ino++) {
+        selection_sort(vetor, 0, ino);
     }
 
-    for (int j = 0; j < i; j++){
-        printf("%d ", vetor[j]);
+
+    for (int io = 0; io < ino; io++){
+        printf("%d ", vetor[io]);
     }
 
     return 0;
