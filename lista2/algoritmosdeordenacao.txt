@@ -18,9 +18,12 @@ Estudos para o código:
 
     typedef int item; // item é a variável do tipo inteiro
     #define key(A) // se for um int retornará A, se for um struct retornará A.chave.
-    #define less(A, B) // se A é menor que B (Key(A)<Key(B)), retornará 1, senão 0.
+    #define less(A, B) (Key(A)<Key(B)) // se A é menor que B, retornará 1, senão 0.
     #define exch(A, B) // troca os valores de A e B. Item temporário(t) = A; A = B; B = t;
     #define cmpxch(A, B) // troca os valores de A e B, se B for menor que A. if(less(B, A)) exch(A, B);
+
+    #define trocará o dado lido pelo do lado direito dele.
+        ex: #define less(A, B) (Key(A)<Key(B)), nesse caso toda vez que o prog ler less(A, B) ele trocará por (Key(A)<Key(B)) 
 
     Algoritmos de Ordenação estáveis: itens com chaves idênticas não mudam de posição.
         Ex: Ordenar por nota decrescente
@@ -40,10 +43,10 @@ Estudos para o código:
         Compara o primeiro elemento com todos os outros, se encontrar um menor, troca de lugar.
 
         função recursiva:
-        chama a própria função dentro dela mesma para percorrer os elementos do vetor.
+        chama a própria função dentro dela mesma para percorrer os elementos do vetor. Melhor para casos menores e/ou com linguagens funcionais como: Lisp, Haskell, Elixir.
 
         função iterativa:
-        usar for para percorrer por todos os elementos do vetor.
+        usar for para percorrer por todos os elementos do vetor. Melhor para casos maiores.
 
         //void já que não retorna nada
         void selection_sort(int numeros[], int l, int r) { //vetor, item mais a esquerda e item mais a direita. 

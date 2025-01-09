@@ -3,9 +3,9 @@
 // Cabeçalhs
 void selection_sort(int numeros[], int l, int r);
 
-int less(int a, int b);
+#define less(A, B) ((A) < (B))
 
-void exch(int a, int b);
+#define exch(A, B) { int t = A; A = B; B = t; }
 
 int main (void){
 
@@ -22,16 +22,6 @@ int main (void){
     }
 
     return 0;
-}
-
-int less(int a, int b) { //função que verifica se a é menor que b.
-    return a < b;
-}
-
-void exch(int a, int b) { //função que troca os valores de a e b.
-    int t = a;
-    a = b;
-    b = t;
 }
 
 void selection_sort(int numeros[], int l, int r) { //vetor, item mais a esquerda e item mais a direita. 
