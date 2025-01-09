@@ -14,14 +14,17 @@ int main (void){
     int ino = 0; //contador de elementos do vetor. (Index Não Ordenado)
     int io = 0; //contador de elementos do vetor. (Index Ordenado)
     
+    //eof = ctrl+d no linux, ctrl+z no windows.
     for (ino=0; scanf("%d", &vetor[ino]) != EOF; ino++) {
-        selection_sort(vetor, 0, ino);
     }
+    printf("\n");
 
+    selection_sort(vetor, 0, ino-1);
 
     for (io = 0; io < ino; io++){
         printf("%d ", vetor[io]);
     }
+    printf("\n");
 
     return 0;
 }
@@ -35,7 +38,7 @@ void selection_sort(int numeros[], int l, int r) { //vetor, item mais a esquerda
                 menor = j; //se o item j for menor que o item menor, menor recebe j.
                 }
             }
-            exch(numeros[l], numeros[menor]); //troca o valor de l p/ menor após ser verificado qual o menor.
+            exch(numeros[i], numeros[menor]); //troca o valor de l p/ menor após ser verificado qual o menor.
             //selection_sort(numeros, l+1, r); //chama a função novamente, mas com l+1, ou seja, o próximo item a esquerda.
         } 
 }

@@ -51,13 +51,13 @@ Estudos para o código:
         //void já que não retorna nada
         void selection_sort(int numeros[], int l, int r) { //vetor, item mais a esquerda e item mais a direita. 
             for (int i = l; i < r; i++) { //i começa no item mais a esquerda e vai até o item mais a direita.
-        Nesse caso, item l = 0 e item r = 4. 
+            //Nesse caso, item l = 0 e item r = 4. 
             int menor = i;
             for (int j = i+1; j <= r; j++) { //j começa no próximo item a esquerda de l e vai até o item mais a direita.
                 if (less(numeros[j], numeros[menor])) menor = j; //se o item j for menor que o item menor, menor recebe j.
             }
-            exch(numeros[l], numeros[menor]); //troca o valor de l p/ menor após ser verificado qual o menor.
-            selection_sort(numeros, l+1, r); //chama a função novamente, mas com l+1, ou seja, o próximo item a esquerda.
+            exch(numeros[i], numeros[menor]); //troca o valor de l p/ menor após ser verificado qual o menor.
+            //selection_sort(numeros, l+1, r); //chama a função novamente, mas com l+1, ou seja, o próximo item a esquerda.
             }
         }
 
