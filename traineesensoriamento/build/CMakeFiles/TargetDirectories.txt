@@ -1,3 +1,0 @@
-/mnt/c/users/mikel/onedrive/gcd/traineesensoriamento/build/CMakeFiles/traineesensoriamento.dir
-/mnt/c/users/mikel/onedrive/gcd/traineesensoriamento/build/CMakeFiles/edit_cache.dir
-/mnt/c/users/mikel/onedrive/gcd/traineesensoriamento/build/CMakeFiles/rebuild_cache.dir
