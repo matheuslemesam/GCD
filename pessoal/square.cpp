@@ -6,11 +6,11 @@ using namespace cv;
 using namespace std;
 
 int main() {
-    // Carregar imagem, converter para escala de cinza, aplicar blur e afiar a imagem
-    Mat image = imread("1.png");
-    Mat gray, blur, sharpen;
-    cvtColor(image, gray, COLOR_BGR2GRAY);
-    medianBlur(gray, blur, 5);
+    
+    // carregar imagem convertida para escala de cinza, aplicar blur e afiar a imagem
+    Mat image = imread("square.png",  IMREAD_GRAYSCALE);
+    Mat blur, sharpen;
+    medianBlur(image, blur, 5);
     Mat sharpen_kernel = (Mat_<float>(3,3) << -1,-1,-1, -1,9,-1, -1,-1,-1);
     filter2D(blur, sharpen, -1, sharpen_kernel);
 
