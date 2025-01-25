@@ -3,5 +3,5 @@ output
 .vscode
 main.exe
 .vs
-README
+PRIVATE.md
 opencv.txt

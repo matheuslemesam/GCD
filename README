@@ -1,9 +1,3 @@
-meu caminho para o wsl: cd /mnt/c/users/mikel/onedrive/gcd
-
-Projeto trainee: Diferenciar área urbana construída de área não construída através da câmera (raspberry pi camera rev 1.3) e do openCV.
-
-Exercícios Gobbi:
-
 Ex1: canais.cpp, separar os canais de cor RGB da imagem.
 
 Ex2: deteccao1.cpp, deteccao2.cpp e deteccao3.cpp, Encontrar o raio de uma imagem de 3 formas diferentes: 
