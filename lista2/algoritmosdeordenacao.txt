@@ -12,6 +12,7 @@ Estudos para o código:
             Ex: em uma lista de alunos, queremos ordenar por nome, matrícula, nota, etc.
 
         Objetivo? Rearranjar as chaves de forma que fiquem em conformidade com a ordem estabelecida.
+        
         O arquivo cabe na memória? Sim, então podemos usar algoritmos de ordenação interna. Se não, usamos algoritmos de ordenação externa.
 
         Vetores ou listas encadeadas? Vetores são mais fáceis de implementar, mas listas encadeadas são mais flexíveis. Muda a complexidade dos algoritmos de acordo com o tipo de dado.
@@ -37,6 +38,10 @@ Estudos para o código:
         Vantages do instável? Mais eficiente, Menos complexo, Menos memória, Mais rápido.
 
         Minhas considerações: Para numeros com intervalos maiores como 0 a 100, a ordenação instável é melhor já que a probabilidade de terem números repetidos é menor e ela é mais eficiente.
+
+    Quando usar cada algoritmo?
+        Se ordenado, Insection Sort
+        Merge Sort, o melhor, ordena de 2^8 até 2^20 em menos de 0.2s
 
     Algoritmo de Ordenação por seleção (Selection Sort):
         Ex: int numeros[5] = {30, 10, 40, 20, 50}; // 5 elementos, indice 0 a 4.

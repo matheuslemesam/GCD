@@ -21,20 +21,20 @@ int main() {
     }
 
     Mat peb; // converter a imagem para cinza
-    cvtColor(image, peb, COLOR_BGR2GRAY);
+    cvtColor(image, peb, COLOR_BGR2GRAY); //cvt color converte a imagem para diferentes espaços de cor. Neste caso, de BGR para cinza.
 
     int minimo = 240; // Tons próximos ao branco
     int maximo = 255; // Branco puro
 
-    Mat mascara;
-    inRange(peb, Scalar(minimo), Scalar(maximo), mascara);
+    Mat mascara; 
+    inRange(peb, Scalar(minimo), Scalar(maximo), mascara); //Transforma a imagem em binária, onde os valores que estão entre minimo e maximo são transformados em branco e o restante em preto.
 
     Mat mascarainversa;
-    bitwise_not(mascara, mascarainversa);
+    bitwise_not(mascara, mascarainversa); // Inverter a máscara, transformando o branco em preto e o preto em branco.
 
     // Aplicar a máscara à imagem original
     Mat resultado;
-    bitwise_and(peb, peb, resultado, mascara);
+    bitwise_and(peb, peb, resultado, mascara); // Aplica a máscara invertida à imagem original, resultando em uma imagem onde apenas os pixels fora do intervalo de cores especificado são mantidos.
 
     imshow("Img Og", image); // mostrar a imagem original
 

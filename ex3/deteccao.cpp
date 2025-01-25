@@ -52,11 +52,12 @@ int main() {
     int minimo = 240; // Tons próximos ao branco
     int maximo = 255; // Branco puro
 
+    // Cria a máscara para a imagem.
     Mat mascara;
     inRange(peb, Scalar(minimo), Scalar(maximo), mascara);
 
-    Mat mascarainversa;
-    bitwise_not(mascara, mascarainversa);
+    //Mat mascarainversa;
+    //bitwise_not(mascara, mascarainversa);
 
     // Aplicar a máscara à imagem original
     Mat resultado;
