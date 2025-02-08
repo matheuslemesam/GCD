@@ -3,15 +3,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <opencv2/opencv.hpp>
+#include <raspicam/raspicam.h>
 
 using namespace cv;
 using namespace std;
 using namespace raspicam;
-using namespace VideoWriter;
-using namespace Mat;
 using namespace ios;
-using namespace ofstream;
-using namespace vector;
 
 int main() {
 
@@ -21,18 +18,19 @@ int main() {
         cap.set(CAP_PROP_FRAME_WIDTH, 1920);
         cap.set(CAP_PROP_FRAME_HEIGHT, 1080);
         cap.set(CAP_PROP_FPS, 30);
-        cap.set(CAP_PROP_FOURCC, fourcc('M', 'J', 'P', 'G'));
+        cap.set(CAP_PROP_FOURCC, VideoWriter::fourcc('M', 'J', 'P', 'G'));
         if (cap.isOpened()){
             break; // se a cam abrir, sai do loop
         }
-        else if (!cap.isOpened && i == 2){
+        else if (!cap.isOpened() && i == 2){
+            RaspiCam Camera;
             Camera.release();
             sleep(3);
-            VideoCapture cap(0, CAP_V4L2);
+            cap.open(0, CAP_V4L2);
             cap.set(CAP_PROP_FRAME_WIDTH, 1920);
             cap.set(CAP_PROP_FRAME_HEIGHT, 1080);
             cap.set(CAP_PROP_FPS, 30);
-            cap.set(CAP_PROP_FOURCC, fourcc('M', 'J', 'P', 'G'));
+            cap.set(CAP_PROP_FOURCC, VideoWriter::fourcc('M', 'J', 'P', 'G'));
         }
     }
 
@@ -42,7 +40,6 @@ int main() {
 
     if (frame.empty()) {
         for (int i = 0; i < 3; i++){
-            Mat frame;
             cap >> frame;
             if (!frame.empty()) {
                 break;
@@ -59,8 +56,8 @@ int main() {
     GaussianBlur(framepeb, framepeb, Size(5, 5), 0); // suavizar
 
     // aplica o Gabor Kernel em múltiplas orientações
-    <double> orientations = {0, CV_PI / 4, CV_PI / 2, 3 * CV_PI / 4};
-    Mat resultadoFinal = zeros(framepeb.size(), CV_8UC1);
+    vector<double> orientations = {0, CV_PI / 4, CV_PI / 2, 3 * CV_PI / 4};
+    Mat resultadoFinal = Mat::zeros(framepeb.size(), CV_8UC1);
 
     for (double theta : orientations){
         Mat gaborKernel = getGaborKernel(Size(31, 31), 8.0, theta, 10.0, 0.5, 0, CV_32F);
@@ -74,7 +71,7 @@ int main() {
     threshold(resultadoFinal, framebi, 110, 255, THRESH_BINARY);
 
     // encontra contornos
-    <<Point>> contornos;
+    vector<vector<Point>> contornos;
     findContours(framebi, contornos, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
 
     // calcula a área urbana
@@ -84,7 +81,7 @@ int main() {
     for (size_t i = 0; i < contornos.size(); i++){
         double area = contourArea(contornos[i]);
         if (area <= 10800){
-            <Point> approx;
+            vector<Point> approx;
             approxPolyDP(contornos[i], approx, arcLength(contornos[i], true) * 0.02, true);
 
             if (approx.size() == 4){ // retângulo ou quadrado
@@ -108,7 +105,7 @@ int main() {
     double porcentagemAreaUrbana = (areatot / areatotalpx) * 100.0;
 
     // salva os resultados em bin
-    arquivoBinario("dados/dados.bin", out | binary);
+    ofstream arquivoBinario("dados/dados.bin", ios::out | ios::binary);
     arquivoBinario.write(reinterpret_cast<char*>(&porcentagemAreaUrbana), sizeof(porcentagemAreaUrbana));
     arquivoBinario.write(reinterpret_cast<char*>(&areatot), sizeof(areatot));
     arquivoBinario.close();
