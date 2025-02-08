@@ -51,9 +51,12 @@ int main(){
     Mat mascaplicada;
     bitwise_and(framepeb, framepeb, mascaplicada, mascara);
 
-    Mat gaborKernel = getGaborKernel(Size(21, 21), 5, CV_PI/4, 10, 0.5, 0, CV_32F);
-    Mat imggabor;
-    filter2D(framepeb, imggabor, CV_8UC3, gaborKernel);
+    vector<double> orientations = {0, CV_PI / 4, CV_PI / 2, 3 * CV_PI / 4};
+    for (double theta : orientations){
+        Mat gaborKernel = getGaborKernel(Size(31, 31), 8.0, theta, 10.0, 0.5, 0, CV_32F);
+        Mat imggabor;
+        filter2D(framepeb, imggabor, CV_8UC3, gaborKernel);
+    }
 
     // juntar masc e gabor
     Mat resultado;
