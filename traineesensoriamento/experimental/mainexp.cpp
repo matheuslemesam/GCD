@@ -3,11 +3,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <opencv2/opencv.hpp>
-#include <raspicam/raspicam.h>
 
 using namespace cv;
 using namespace std;
-using namespace raspicam;
 using namespace ios;
 
 int main() {
@@ -22,11 +20,10 @@ int main() {
         if (cap.isOpened()){
             break; // se a cam abrir, sai do loop
         }
-        else if (!cap.isOpened() && i == 2){
-            RaspiCam Camera;
-            Camera.release();
+        else if (!cap.isOpened && i == 2){
+            cap.release();
             sleep(3);
-            cap.open(0, CAP_V4L2);
+            VideoCapture cap(0, CAP_V4L2);
             cap.set(CAP_PROP_FRAME_WIDTH, 1920);
             cap.set(CAP_PROP_FRAME_HEIGHT, 1080);
             cap.set(CAP_PROP_FPS, 30);
